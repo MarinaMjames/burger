@@ -1,56 +1,66 @@
-<h1>Cats!</h1>
-
-<h2>Cats that are not sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#unless this.sleepy}}
+<h1>Bob's Burgers of the Day</h1>
+<img src="../public/assets/img/BobsBurgers.png">
+<div class="ink-grid">
+  <div class="column-group">
+  <div class="all-50">
+<h2>Burgers Not Tried:</h2>
+<ul class="unstyled">
+  {{#each burgers}}
       <li>
-        {{this.name}}
-
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="sleepy" value="true">
-          <button type="submit">SLEEP TIME!</button>
-        </form>
-
-        {{> cats/delete-cat}}
+        {{this.id}}
+        {{this.burger_name}}
       </li>
-    {{/unless}}
   {{/each}}
+
 </ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#if this.sleepy}}
+</div>
+{{!-- Burgers that have been eaten --}}
+<div class="all-50">
+<h2>Burgers I Tried:</h2>
+<ul class="unstyled">
+  {{#each burgers}}
+    {{#if this.devoured}}
       <li>
-        {{this.name}}
-
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="sleepy" value="false">
-          <button type="submit">WAKE UP!</button>
-        </form>
-
-        {{> cats/delete-cat}}
+        {{this.burger_name}}
       </li>
     {{/if}}
   {{/each}}
 </ul>
+</div>
+</div>
+</div>
 
-<h2>Add a Cat</h2>
-<form class="create-update-form" action="/" method="POST">
-
+<div class="ink-grid align-center">
+  <div class="column-group">
+{{!-- Add a burger Box --}}
+<div class="all-25">
+<form action="/" method="POST">
   <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+    <label for="ca">Burger Name:</label><br>
+    <input type="text" id="burg" name="burger_name">
   </div>
-
-  <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
+  <button class="ink-button green" type="submit">ADD A BURGER!</button>
 </form>
+</div>
+{{!-- Eat the burger - change devoured to true --}}
+<div class="all-25">
+<form action="/{{this.id}}?_method=UPDATE" method="POST">
+  <div class="form-group">
+    <label for="ca">Burger ID You Want to Eat:</label>
+    <input type="text" id="burg" name="burger_id">
+  </div>
+  <button class="ink-button green" type="submit">EAT THE BURGER!</button>
+</form>
+</div>
+{{!-- Delete the burger --}}
+<div class="all-25">
+<form action="/{{this.id}}?_method=DELETE" method="POST">
+  <div class="form-group">
+    <label for="ca">ID of Burger to Delete:</label><br>
+    <input type="text" id="burg" name="burger_id">
+  </div>
+  <button class="ink-button green" type="submit">DELETE A BURGER!</button>
+</form>
+</div>
+</div>
+</div>

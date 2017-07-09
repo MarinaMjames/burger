@@ -1,23 +1,23 @@
-var connections = require("./connection");
+// var connections = require("./connection");
 
 
-var orm = {
-	selectAll: function(tableInput, cb) {
-		var queryString = "SELECT * FROM ??";
-		connection.query(queryString, [tableInput], function(err, result){
-			cb(result);
-		});
-	}, 
-	insertOne: function(tableInput, colToSearch, valOfCol, cb){
-		var queryString = "INSERT INTO ??(??) VALUES ??";
-		connection.query(queryString)
-	}, 
-	updateOne: function(){
+// var orm = {
+// 	selectAll: function(tableInput, cb) {
+// 		var queryString = "SELECT * FROM ??";
+// 		connection.query(queryString, [tableInput], function(err, result){
+// 			cb(result);
+// 		});
+// 	}, 
+// 	insertOne: function(tableInput, colToSearch, valOfCol, cb){
+// 		var queryString = "INSERT INTO ??(??) VALUES ??";
+// 		connection.query(queryString)
+// 	}, 
+// 	// updateOne: function(){
 
-	}
-}
+// 	// }
+// }
 
-module.exports = orm; 
+// module.exports = orm; 
 
 
 // Import MySQL connection.
